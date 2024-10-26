@@ -18,12 +18,8 @@
 						"referenceName": "readcsvfile",
 						"type": "DatasetReference"
 					},
-					"name": "SinktoMongoDB",
-					"description": "Sink Transformed Data to MongoDB",
-					"rejectedDataLinkedService": {
-						"referenceName": "ADLSConnection",
-						"type": "LinkedServiceReference"
-					}
+					"name": "LoadDataToSink",
+					"description": "Transformed Data"
 				}
 			],
 			"transformations": [
@@ -67,7 +63,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> SinktoMongoDB"
+				"     skipDuplicateMapOutputs: true) ~> LoadDataToSink"
 			]
 		}
 	}
