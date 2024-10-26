@@ -18,8 +18,7 @@
 						"referenceName": "readcsvfile",
 						"type": "DatasetReference"
 					},
-					"name": "LoadDataToSink",
-					"description": "Transformed Data"
+					"name": "sink1"
 				}
 			],
 			"transformations": [
@@ -63,7 +62,7 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> LoadDataToSink"
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
