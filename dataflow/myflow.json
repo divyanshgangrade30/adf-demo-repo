@@ -1,0 +1,74 @@
+{
+	"name": "myflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "readcsvfile",
+						"type": "DatasetReference"
+					},
+					"name": "ReadDataFromADLS"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "readcsvfile",
+						"type": "DatasetReference"
+					},
+					"name": "SinktoMongoDB",
+					"description": "Sink Transformed Data to MongoDB",
+					"rejectedDataLinkedService": {
+						"referenceName": "ADLSConnection",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "Transformation",
+					"description": "Doing Filter Operation"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ORDERNUMBER as string,",
+				"          QUANTITYORDERED as string,",
+				"          PRICEEACH as string,",
+				"          ORDERLINENUMBER as string,",
+				"          SALES as integer,",
+				"          ORDERDATE as string,",
+				"          STATUS as string,",
+				"          QTR_ID as string,",
+				"          MONTH_ID as string,",
+				"          YEAR_ID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ReadDataFromADLS",
+				"ReadDataFromADLS filter(SALES>=1500) ~> Transformation",
+				"Transformation sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ORDERNUMBER as string,",
+				"          QUANTITYORDERED as string,",
+				"          PRICEEACH as string,",
+				"          ORDERLINENUMBER as string,",
+				"          SALES as string,",
+				"          ORDERDATE as string,",
+				"          STATUS as string,",
+				"          QTR_ID as string,",
+				"          MONTH_ID as string,",
+				"          YEAR_ID as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SinktoMongoDB"
+			]
+		}
+	}
+}
