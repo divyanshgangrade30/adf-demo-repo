@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "readcsvfile",
+						"referenceName": "WriteLoadData",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -46,18 +46,6 @@
 				"ReadDataFromADLS filter(SALES>=1500) ~> Transformation",
 				"Transformation sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          ORDERNUMBER as string,",
-				"          QUANTITYORDERED as string,",
-				"          PRICEEACH as string,",
-				"          ORDERLINENUMBER as string,",
-				"          SALES as string,",
-				"          ORDERDATE as string,",
-				"          STATUS as string,",
-				"          QTR_ID as string,",
-				"          MONTH_ID as string,",
-				"          YEAR_ID as string",
-				"     ),",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",

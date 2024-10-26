@@ -1,0 +1,23 @@
+{
+	"name": "WriteLoadData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "TransofrmedDataLoad(Load)",
+				"fileSystem": "mycontainer777"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
