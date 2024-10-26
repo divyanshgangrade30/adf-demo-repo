@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "My-Data-Factory777"
+		},
+		"ADLSConnection_accountKey": {
+			"value": ""
+		},
+		"MongoDbAtlas1_connectionString": {
+			"value": ""
+		},
+		"ADLSConnection_properties_typeProperties_url": {
+			"value": "https://myystorage7770.dfs.core.windows.net/"
+		},
+		"MongoDbAtlas1_properties_typeProperties_database": {
+			"value": "database7777"
+		}
+	}
+}
