@@ -25,6 +25,10 @@
 				{
 					"name": "Transformation",
 					"description": "Doing Filter Operation"
+				},
+				{
+					"name": "AggregateData",
+					"description": "Do aggregation of data"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +48,9 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ReadDataFromADLS",
 				"ReadDataFromADLS filter(SALES>=1500) ~> Transformation",
-				"Transformation sink(allowSchemaDrift: true,",
+				"Transformation aggregate(groupBy(YEAR_ID),",
+				"     TotalSales = sum(SALES)) ~> AggregateData",
+				"AggregateData sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
